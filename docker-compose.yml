@@ -19,7 +19,7 @@ x-common-settings: &common-settings
         devices:
           - driver: nvidia
             count: 1
-            capabilities: [ gpu ]
+            capabilities: [gpu]
   runtime: nvidia
   ipc: host
   tty: true # enable colorized logs
@@ -37,25 +37,25 @@ x-common-settings: &common-settings
       max-file: "10"
 
 services:
-  server:
-    <<: *common-settings
-    container_name: metavoice-server
-    command: [ "--port=58004" ]
-    ports:
-      - 58004:58004
-    healthcheck:
-      test: [ "CMD", "curl", "http://metavoice-server:58004/health" ]
-      interval: 1m
-      timeout: 10s
-      retries: 20
+  # server:
+  #   <<: *common-settings
+  #   container_name: metavoice-server
+  #   command: ["--port=58004"]
+  #   ports:
+  #     - 58004:58004
+  #   healthcheck:
+  #     test: ["CMD", "curl", "http://metavoice-server:58004/health"]
+  #     interval: 1m
+  #     timeout: 10s
+  #     retries: 20
   ui:
     <<: *common-settings
     container_name: metavoice-ui
-    entrypoint: [ "poetry", "run", "python", "app.py" ]
+    entrypoint: ["poetry", "run", "python", "app.py"]
     ports:
       - 7861:7861
     healthcheck:
-      test: [ "CMD", "curl", "http://localhost:7861" ]
+      test: ["CMD", "curl", "http://localhost:7861"]
       interval: 1m
       timeout: 10s
       retries: 1

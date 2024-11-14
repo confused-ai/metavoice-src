@@ -17,7 +17,7 @@ TTS_MODEL = tyro.cli(TTS, args=["--telemetry_origin", "webapp"])
 
 #### setup interface
 RADIO_CHOICES = ["Preset voices", "Upload target voice (atleast 30s)"]
-MAX_CHARS = 220
+MAX_CHARS = 5000
 PRESET_VOICES = {
     # female
     "Bria": "https://cdn.themetavoice.xyz/speakers/bria.mp3",
